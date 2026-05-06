@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SEPHARA IA - Objetivos e Funcionamento</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&amp;family=Public+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#75d1ff",
+                    "tertiary-fixed": "#c2e8ff",
+                    "inverse-on-surface": "#eef1f4",
+                    "background": "#f7fafd",
+                    "secondary-fixed": "#ebdcff",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#d4bbff",
+                    "surface-dim": "#d7dadd",
+                    "on-primary": "#ffffff",
+                    "surface-container-highest": "#e0e3e6",
+                    "on-tertiary-container": "#00b5ef",
+                    "on-background": "#181c1e",
+                    "surface-container-low": "#f1f4f7",
+                    "primary-container": "#4f14a0",
+                    "tertiary": "#002c3c",
+                    "on-primary-container": "#bb95ff",
+                    "on-tertiary-fixed": "#001e2b",
+                    "surface-bright": "#f7fafd",
+                    "primary-fixed-dim": "#d4bbff",
+                    "secondary-fixed-dim": "#d4bbff",
+                    "inverse-surface": "#2d3133",
+                    "on-secondary-fixed-variant": "#5d00c2",
+                    "on-secondary-fixed": "#270058",
+                    "outline": "#7b7484",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#8d42ff",
+                    "surface-variant": "#e0e3e6",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#e5e8eb",
+                    "on-primary-fixed": "#260058",
+                    "primary": "#4F14A0",
+                    "surface-tint": "#7141c3",
+                    "on-primary-fixed-variant": "#5923aa",
+                    "surface-container": "#ebeef1",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#00435b",
+                    "on-secondary-container": "#fdf6ff",
+                    "secondary": "#731be5",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#ccc3d5",
+                    "primary-fixed": "#ebdcff",
+                    "on-surface": "#181c1e",
+                    "on-surface-variant": "#4a4453",
+                    "surface": "#f7fafd",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#004d67"
+            },
+            "borderRadius": {
+                    "DEFAULT": "8px",
+                    "lg": "12px",
+                    "xl": "16px",
+                    "2xl": "24px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "24px",
+                    "stack-lg": "48px",
+                    "gutter": "24px",
+                    "unit": "8px",
+                    "container-max": "1200px",
+                    "stack-sm": "8px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Space Grotesk", "sans-serif"],
+                    "headline-md": ["Space Grotesk", "sans-serif"],
+                    "body-lg": ["Public Sans", "sans-serif"],
+                    "headline-xl": ["Space Grotesk", "sans-serif"],
+                    "body-md": ["Public Sans", "sans-serif"],
+                    "label-sm": ["Public Sans", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .glassmorphism { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); background: rgba(255, 255, 255, 0.7); }
+        .premium-shadow { box-shadow: 0 20px 50px -12px rgba(79, 20, 160, 0.12); }
+        .tech-grid { background-image: radial-gradient(circle at 2px 2px, rgba(79, 20, 160, 0.05) 1px, transparent 0); background-size: 40px 40px; }
+        .animated-gradient { background: linear-gradient(-45deg, #4f14a0, #731be5, #d4bbff, #ffffff); background-size: 400% 400%; animation: gradient 15s ease infinite; }
+        @keyframes gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .node-line { stroke: rgba(79, 20, 160, 0.1); stroke-dasharray: 4 4; }
+        .particle { animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary selection:text-on-primary tech-grid relative overflow-x-hidden">
+<!-- Background SVG Elements -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<svg class="absolute top-0 right-0 w-full h-full opacity-20" fill="none" viewbox="0 0 1440 800">
+<circle class="particle" cx="1300" cy="100" r="200" stroke="#4F14A0" stroke-width="0.5" style="animation-delay: 0s;"></circle>
+<circle class="particle" cx="100" cy="700" r="150" stroke="#731BE5" stroke-width="0.5" style="animation-delay: 1s;"></circle>
+<path class="node-line" d="M-100 200 Q 300 400 1500 200" fill="none"></path>
+<path class="node-line" d="M-100 600 Q 700 400 1500 600" fill="none"></path>
+</svg>
+</div>
+<!-- TopNavBar -->
+<header class="glassmorphism border-b border-primary/5 fixed top-0 w-full z-50 premium-shadow">
+<div class="flex justify-between items-center max-w-[1200px] mx-auto px-6 h-20">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg">auto_awesome</span>
+</div>
+<div class="text-xl font-bold tracking-tight text-primary font-['Space_Grotesk']">SEPHARA IA</div>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-medium text-sm" href="#">Solução</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-bold text-sm" href="#">Objetivos</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-medium text-sm" href="#">Arquitetura</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-medium text-sm" href="#">Investimento</a>
+</nav>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-semibold text-sm hover:shadow-lg hover:shadow-primary/20 transition-all flex items-center gap-2 group">
+                Falar com Consultor
+                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" style="font-size: 18px;">arrow_forward</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="relative z-10 max-w-container-max mx-auto px-6 pt-40 pb-24 flex flex-col gap-24">
+<!-- Hero Header Section -->
+<section class="flex flex-col md:flex-row items-center gap-12">
+<div class="flex-1 flex flex-col gap-6">
+<span class="bg-primary-fixed text-primary px-4 py-1.5 rounded-full text-xs font-bold w-fit uppercase tracking-widest">Inovação Pública</span>
+<h1 class="font-headline-xl text-5xl md:text-6xl text-on-surface leading-tight">Funcionamento <span class="text-primary italic">&amp;</span> Objetivos</h1>
+<p class="font-body-lg text-lg text-on-surface-variant max-w-xl leading-relaxed">
+                    Arquitetura de missão crítica desenhada para alta disponibilidade e soberania tecnológica na administração pública, assegurando processos fluidos e seguros.
+                </p>
+<div class="flex gap-4">
+<button class="bg-white border border-outline-variant px-6 py-3 rounded-xl font-semibold text-sm hover:border-primary transition-colors">Baixar Whitepaper</button>
+<button class="flex items-center gap-2 text-primary font-bold text-sm py-3 px-2">Ver Demonstração <span class="material-symbols-outlined">play_circle</span></button>
+</div>
+</div>
+<div class="flex-1 w-full relative">
+<div class="aspect-video bg-surface-container-high rounded-2xl overflow-hidden premium-shadow border border-white/50 relative">
+<img alt="Visão panorâmica de um totem de autoatendimento SEPHARA IA em um órgão público moderno" class="w-full h-full object-cover mix-blend-overlay opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDCwpPn7Xk5XwHTejNfMd6c7cHOAUHpTiSQWUxiZ3X6QUV82YCVqa8JQo_bX1wK8_6xt8qn93HW86-JY2tHdJo7Bo4s5esXBxNbhvSwKSpTeYa68nhxbPCuIjD2nwp6SMDlYBKD1ZAo3WpfzoVWsj1DVUzt1DKipR9e_1tzAZVn-P3iLyCpxLrfvpDZVHjy_7xCV8XUW1ExVQ_Fft-P6MK_8Jj_wV-RQWzyTOLDMlQfMw6jPBDKM5bt0SO_9dDUqe70AWfhPrUwEFI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4 glassmorphism p-4 rounded-xl border border-white/20">
+<div class="flex items-center gap-3">
+<span class="flex h-3 w-3 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+</span>
+<p class="text-xs font-medium text-primary uppercase tracking-tighter">Sistema Online: Projeto Piloto Brasília</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Funcionamento do Sistema - Step-by-Step Infographic -->
+<section class="flex flex-col gap-12">
+<div class="flex flex-col items-center text-center gap-4">
+<h2 class="font-headline-md text-3xl text-on-surface">Jornada de Atendimento Inteligente</h2>
+<div class="w-20 h-1.5 bg-primary rounded-full"></div>
+</div>
+<div class="relative">
+<!-- Connecting Line (Desktop) -->
+<div class="hidden lg:block absolute top-[60px] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent z-0"></div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+<!-- Step 1 -->
+<div class="bg-white/50 border border-white rounded-2xl p-8 flex flex-col items-center text-center premium-shadow hover:-translate-y-2 transition-all duration-300 group">
+<div class="w-20 h-20 rounded-2xl bg-primary text-white flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined" style="font-size: 36px;">face_retouching_natural</span>
+</div>
+<h3 class="font-headline-md text-xl text-on-surface mb-3">Biometria Facial</h3>
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed">
+                            Captura instantânea de alta fidelidade via totem ergonômico com tecnologia infravermelha.
+                        </p>
+<span class="mt-4 text-xs font-bold text-primary/40">PASSO 01</span>
+</div>
+<!-- Step 2 -->
+<div class="bg-white/50 border border-white rounded-2xl p-8 flex flex-col items-center text-center premium-shadow hover:-translate-y-2 transition-all duration-300 group">
+<div class="w-20 h-20 rounded-2xl bg-primary-container text-primary flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 36px;">encrypted</span>
+</div>
+<h3 class="font-headline-md text-xl text-on-surface mb-3">Validação IA</h3>
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed">
+                            Motor de inteligência artificial cruza dados em milissegundos com bases oficiais seguras.
+                        </p>
+<span class="mt-4 text-xs font-bold text-primary/40">PASSO 02</span>
+</div>
+<!-- Step 3 -->
+<div class="bg-white/50 border border-white rounded-2xl p-8 flex flex-col items-center text-center premium-shadow hover:-translate-y-2 transition-all duration-300 group">
+<div class="w-20 h-20 rounded-2xl bg-secondary-fixed text-primary flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 36px;">qr_code_2</span>
+</div>
+<h3 class="font-headline-md text-xl text-on-surface mb-3">Emissão Segura</h3>
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed">
+                            Geração de ticket físico ou digital com criptografia dinâmica para acesso a serviços.
+                        </p>
+<span class="mt-4 text-xs font-bold text-primary/40">PASSO 03</span>
+</div>
+<!-- Step 4 -->
+<div class="bg-white/50 border border-white rounded-2xl p-8 flex flex-col items-center text-center premium-shadow hover:-translate-y-2 transition-all duration-300 group">
+<div class="w-20 h-20 rounded-2xl bg-primary text-white flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined" style="font-size: 36px;">database_sync</span>
+</div>
+<h3 class="font-headline-md text-xl text-on-surface mb-3">Sincronização</h3>
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed">
+                            Atualização em tempo real do dashboard administrativo para controle de fluxo e demanda.
+                        </p>
+<span class="mt-4 text-xs font-bold text-primary/40">PASSO 04</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Offline-first Differential -->
+<section class="relative overflow-hidden rounded-[2rem] premium-shadow">
+<div class="absolute inset-0 animated-gradient opacity-10"></div>
+<div class="relative bg-white/60 glassmorphism p-8 md:p-16 flex flex-col lg:flex-row items-center gap-12 border border-white">
+<div class="lg:w-1/2 flex flex-col gap-6">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">signal_cellular_alt_2_bar</span>
+</div>
+<span class="text-primary font-bold tracking-widest text-xs uppercase">Tecnologia de Ponta</span>
+</div>
+<h3 class="font-headline-lg text-4xl text-on-surface">Arquitetura Offline-first via Rede Híbrida</h3>
+<p class="font-body-md text-lg text-on-surface-variant leading-relaxed">
+                        Nossa solução elimina o risco de interrupção por falhas de infraestrutura. Os totens processam validações localmente e utilizam modems 4G/5G industriais para redundância total, garantindo 99.9% de uptime mesmo em locais remotos.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-2">
+<div class="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-primary/10 text-sm font-medium">
+<span class="material-symbols-outlined text-primary" style="font-size: 20px;">check_circle</span> Autonomia Local
+                        </div>
+<div class="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-primary/10 text-sm font-medium">
+<span class="material-symbols-outlined text-primary" style="font-size: 20px;">check_circle</span> Redundância 4G/5G
+                        </div>
+</div>
+</div>
+<div class="lg:w-1/2 w-full">
+<div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+<img alt="Interface de software mostrando o painel de sincronização em tempo real" class="w-full h-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsDeYdI3Q6PBVLnOYl5Do83PK1FsJ2Rfc7k1lXaEYAUjLLmeSGyKISNrLSNMm05yXYR6ReQwm0C0pSaSAoBilfksafSoKaPP4NqHOyyJynhYSjFSLkRLHoQUzj1P9i6-sIMl0tZSdKfZIg9jrYZNkG0QzHpfXdRpqmonPbOG1bKc2dFL0QUFcHkDMa_Qh4hSbyv54qOY02Tc83RkzpUNXKNrstvAsTfI8TAmU--md1ScFWKsvoh1sBq5R_kM7O9P0K7goMG3l0o5kd"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Objetivos do Projeto Piloto - Bento Grid Cards -->
+<section class="flex flex-col gap-12">
+<div class="flex justify-between items-end">
+<div class="flex flex-col gap-2">
+<h2 class="font-headline-md text-3xl text-on-surface">Objetivos do Piloto</h2>
+<p class="text-on-surface-variant text-sm">Metas estratégicas para o rollout nacional</p>
+</div>
+<div class="hidden md:block w-1/3 h-[1px] bg-outline-variant opacity-30"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="group bg-white border border-outline-variant/30 rounded-2xl p-8 flex flex-col gap-6 hover:border-primary transition-colors relative overflow-hidden">
+<div class="absolute -right-8 -top-8 w-24 h-24 bg-primary/5 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+<div class="w-14 h-14 rounded-xl bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-size: 28px;">clinical_notes</span>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-headline-md text-xl text-on-surface">Validar Aderência</h4>
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed">
+                            Mapear a experiência de idosos, PCDs e usuários com baixa literacia digital, refinando interfaces para acessibilidade universal.
+                        </p>
+</div>
+<div class="mt-auto flex items-center gap-2 text-xs font-bold text-primary group-hover:gap-4 transition-all">
+                        DETALHES DO KPI <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group bg-white border border-outline-variant/30 rounded-2xl p-8 flex flex-col gap-6 hover:border-primary transition-colors relative overflow-hidden">
+<div class="absolute -right-8 -top-8 w-24 h-24 bg-primary/5 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+<div class="w-14 h-14 rounded-xl bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-size: 28px;">bolt</span>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-headline-md text-xl text-on-surface">Medir Resiliência</h4>
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed">
+                            Testar limites de latência sob carga máxima e validar a transição imperceptível para rede de contingência celular.
+                        </p>
+</div>
+<div class="mt-auto flex items-center gap-2 text-xs font-bold text-primary group-hover:gap-4 transition-all">
+                        MÉTRICAS DE REDE <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group bg-white border border-outline-variant/30 rounded-2xl p-8 flex flex-col gap-6 hover:border-primary transition-colors relative overflow-hidden">
+<div class="absolute -right-8 -top-8 w-24 h-24 bg-primary/5 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+<div class="w-14 h-14 rounded-xl bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-size: 28px;">groups_2</span>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-headline-md text-xl text-on-surface">Capacitação Local</h4>
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed">
+                            Formar multiplicadores entre os servidores públicos para gestão autônoma do Painel ADM e resolução de casos excepcionais.
+                        </p>
+</div>
+<div class="mt-auto flex items-center gap-2 text-xs font-bold text-primary group-hover:gap-4 transition-all">
+                        PLANO DE TREINAMENTO <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="relative z-10 bg-white border-t border-outline-variant/30 py-16">
+<div class="max-w-[1200px] mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 bg-primary rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[14px]">auto_awesome</span>
+</div>
+<span class="text-lg font-bold text-primary font-['Space_Grotesk']">SEPHARA IA</span>
+</div>
+<p class="text-sm text-on-surface-variant max-w-xs">Transformando a gestão pública através da inteligência artificial e biometria segura.</p>
+</div>
+<div class="flex flex-wrap gap-x-12 gap-y-6">
+<div class="flex flex-col gap-3">
+<span class="text-xs font-bold uppercase tracking-widest text-primary">Institucional</span>
+<a class="text-sm text-on-surface-variant hover:text-primary" href="#">Sobre Nós</a>
+<a class="text-sm text-on-surface-variant hover:text-primary" href="#">Carreiras</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-xs font-bold uppercase tracking-widest text-primary">Legal</span>
+<a class="text-sm text-on-surface-variant hover:text-primary" href="#">Privacidade</a>
+<a class="text-sm text-on-surface-variant hover:text-primary" href="#">Termos</a>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant/60">
+<p>© 2024 SEPHARA IA. Tecnologia Brasileira para Cidadãos Brasileiros.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary" href="#">LinkedIn</a>
+<a class="hover:text-primary" href="#">Twitter</a>
+<a class="hover:text-primary" href="#">Instagram</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

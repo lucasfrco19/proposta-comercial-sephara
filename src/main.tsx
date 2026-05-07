@@ -160,7 +160,7 @@ const glowBridgeVideoUrl =
 const clientFeedbacks = [
   {
     id: 12,
-    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+    avatar: "https://randomuser.me/api/portraits/men/61.jpg",
     segment: "Serviços B2B",
     testimonial:
       "A Sephara organizou nossa captação comercial, automatizou follow-ups e nos deu uma visão de pipeline que antes dependia de conferência manual.",
@@ -169,7 +169,7 @@ const clientFeedbacks = [
   },
   {
     id: 32,
-    avatar: "https://randomuser.me/api/portraits/women/68.jpg",
+    avatar: "https://randomuser.me/api/portraits/women/55.jpg",
     segment: "Saúde privada",
     testimonial:
       "O atendimento ficou mais rápido e mais consistente. A equipe passou a receber clientes com contexto, histórico e próximos passos definidos.",
@@ -178,7 +178,7 @@ const clientFeedbacks = [
   },
   {
     id: 47,
-    avatar: "https://randomuser.me/api/portraits/men/46.jpg",
+    avatar: "https://randomuser.me/api/portraits/men/52.jpg",
     segment: "Mercado imobiliário",
     testimonial:
       "Conectamos CRM, financeiro e indicadores em um painel simples. Foi a primeira vez que a gestão conseguiu enxergar a operação em tempo real.",
@@ -670,15 +670,6 @@ function ProposalContent() {
               entregar dados confiáveis à gestão municipal.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-4">
-              <button className="light-panel light-body rounded-full px-6 py-3 text-sm font-semibold text-[#181c1e] transition hover:border-[#4f14a0]/30">
-                Baixar proposta
-              </button>
-              <button className="light-body flex items-center gap-2 px-1 py-3 text-sm font-semibold text-[#4f14a0]">
-                Ver demonstração
-                <ArrowRight className="h-4 w-4" />
-              </button>
-            </div>
           </BlurIn>
 
           <BlurIn delay={0.08}>
@@ -994,12 +985,12 @@ function ProposalContent() {
 
           <BlurIn delay={0.08}>
             <div className="purple-gradient relative flex h-full flex-col overflow-hidden rounded-[28px] p-8 text-white md:p-10">
-              <div className="absolute right-6 top-6 rounded-full bg-white/12 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em]">
+              <div className="absolute right-6 top-6 rounded-full bg-white/12 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] sm:right-8">
                 Popular
               </div>
 
-              <div className="flex items-start justify-between gap-4">
-                <div>
+              <div className="flex items-start justify-between gap-4 pr-0 sm:pr-24">
+                <div className="min-w-0">
                   <h4 className="light-heading text-3xl font-semibold text-white">
                     Modelo de Assinatura
                   </h4>
@@ -1008,7 +999,7 @@ function ProposalContent() {
                     manutenção e evolução contínua.
                   </p>
                 </div>
-                <Cloud className="h-9 w-9 flex-none text-white" />
+                <Cloud className="mt-12 h-9 w-9 flex-none text-white sm:mt-0" />
               </div>
 
               <div className="mt-10">

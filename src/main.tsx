@@ -241,7 +241,7 @@ function Navbar() {
 
 function HeroSection() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-background">
+    <section className="relative min-h-[660px] overflow-hidden bg-background md:min-h-screen">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,hsl(var(--primary)/0.22),transparent_34rem)]" />
       <Navbar />
 
@@ -726,7 +726,7 @@ function CheckList({ items }: { items: string[] }) {
 
 function ProposalContent() {
   return (
-    <div className="light-canvas relative pb-0">
+    <div className="light-canvas relative flex flex-col pb-0">
       <div className="light-grid pointer-events-none absolute inset-0 opacity-70" />
 
       <section id="solucao" className="relative z-10 mx-auto max-w-[1200px] px-6 py-14 md:py-20">
@@ -998,7 +998,7 @@ function ProposalContent() {
         </div>
       </section>
 
-      <section id="investimento" className="relative z-10 mx-auto max-w-[1200px] px-6 py-12 md:py-16">
+      <section id="investimento" className="relative order-[20] z-10 mx-auto max-w-[1200px] border-b-[4px] border-b-[#9b5de5] px-6 py-12 shadow-[0_32px_90px_rgba(155,93,229,0.18)] md:py-16">
         <div className="text-center">
           <span className="light-chip light-body inline-flex rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em]">
             Modelos de contratação
@@ -1198,7 +1198,7 @@ function ProposalContent() {
         </BlurIn>
       </section>
 
-      <section className="relative z-10 mx-auto max-w-[1200px] px-6 py-10 md:py-14">
+      <section className="relative order-[19] z-10 mx-auto max-w-[1200px] px-6 py-10 md:py-14">
         <div className="light-glass overflow-hidden rounded-[36px] p-4 md:p-6 lg:p-8">
           <BlurIn>
             <div className="light-panel relative overflow-hidden rounded-[32px] p-3">

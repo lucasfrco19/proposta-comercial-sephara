@@ -178,7 +178,7 @@ const clientFeedbacks = [
   },
   {
     id: 47,
-    avatar: "https://randomuser.me/api/portraits/men/52.jpg",
+    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
     segment: "Mercado imobiliário",
     testimonial:
       "Conectamos CRM, financeiro e indicadores em um painel simples. Foi a primeira vez que a gestão conseguiu enxergar a operação em tempo real.",

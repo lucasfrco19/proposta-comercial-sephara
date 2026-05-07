@@ -160,29 +160,29 @@ const glowBridgeVideoUrl =
 const clientFeedbacks = [
   {
     id: 12,
-    avatar: "https://i.pravatar.cc/160?img=12",
+    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
     segment: "Serviços B2B",
     testimonial:
       "A Sephara organizou nossa captação comercial, automatizou follow-ups e nos deu uma visão de pipeline que antes dependia de conferência manual.",
-    author: "Diretoria comercial",
+    author: "Diretoria Comercial",
     role: "Operação de serviços",
   },
   {
     id: 32,
-    avatar: "https://i.pravatar.cc/160?img=32",
+    avatar: "https://randomuser.me/api/portraits/women/68.jpg",
     segment: "Saúde privada",
     testimonial:
       "O atendimento ficou mais rápido e mais consistente. A equipe passou a receber clientes com contexto, histórico e próximos passos definidos.",
-    author: "Sócia-operadora",
+    author: "Sócia-Operadora",
     role: "Clínica particular",
   },
   {
     id: 47,
-    avatar: "https://i.pravatar.cc/160?img=47",
+    avatar: "https://randomuser.me/api/portraits/men/46.jpg",
     segment: "Mercado imobiliário",
     testimonial:
       "Conectamos CRM, financeiro e indicadores em um painel simples. Foi a primeira vez que a gestão conseguiu enxergar a operação em tempo real.",
-    author: "Gestor de expansão",
+    author: "Gestor de Expansão",
     role: "Rede imobiliária",
   },
 ];
@@ -241,7 +241,7 @@ function Navbar() {
 
 function HeroSection() {
   return (
-    <section className="relative min-h-[660px] overflow-hidden bg-background md:min-h-screen">
+    <section className="relative min-h-[560px] overflow-hidden bg-background md:min-h-screen">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,hsl(var(--primary)/0.22),transparent_34rem)]" />
       <Navbar />
 
@@ -549,82 +549,6 @@ function BelowHeroMotionSection() {
       </div>
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-[#f7fafd]" />
-    </section>
-  );
-}
-
-function FinalMotionBridgeSection() {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) {
-      return undefined;
-    }
-
-    let frameId = 0;
-    let resetTimeout = 0;
-    let restarting = false;
-    const fadeWindow = 0.65;
-
-    const animateOpacity = () => {
-      const duration = Number.isFinite(video.duration) ? video.duration : 0;
-      const currentTime = video.currentTime ?? 0;
-
-      if (!duration || restarting) {
-        frameId = window.requestAnimationFrame(animateOpacity);
-        return;
-      }
-
-      let opacity = 1;
-
-      if (currentTime < fadeWindow) {
-        opacity = Math.max(0, Math.min(1, currentTime / fadeWindow));
-      } else if (duration - currentTime < fadeWindow) {
-        opacity = Math.max(0, Math.min(1, (duration - currentTime) / fadeWindow));
-      }
-
-      video.style.opacity = opacity.toString();
-      frameId = window.requestAnimationFrame(animateOpacity);
-    };
-
-    const handleEnded = () => {
-      restarting = true;
-      video.style.opacity = "0";
-      resetTimeout = window.setTimeout(() => {
-        video.currentTime = 0;
-        void video.play();
-        restarting = false;
-      }, 100);
-    };
-
-    video.style.opacity = "0";
-    void video.play().catch(() => undefined);
-    video.addEventListener("ended", handleEnded);
-    frameId = window.requestAnimationFrame(animateOpacity);
-
-    return () => {
-      window.cancelAnimationFrame(frameId);
-      window.clearTimeout(resetTimeout);
-      video.removeEventListener("ended", handleEnded);
-    };
-  }, []);
-
-  return (
-    <section className="relative -mt-px h-[360px] overflow-hidden bg-[#f7fafd] md:h-[500px]">
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        playsInline
-        className="sephara-video absolute inset-0 h-full w-full scale-[1.04] object-cover opacity-0 [mask-image:linear-gradient(to_bottom,transparent_0%,black_32%,black_100%)]"
-      >
-        <source src={glowBridgeVideoUrl} type="video/mp4" />
-      </video>
-      <div className="absolute inset-0 bg-gradient-to-b from-[#f7fafd] via-transparent to-background" />
-      <div className="absolute inset-x-0 top-[-1px] h-48 bg-gradient-to-b from-[#f7fafd] via-[#efe9ff]/95 to-transparent md:h-64" />
-      <div className="absolute inset-x-0 bottom-[-1px] h-48 bg-gradient-to-t from-background via-background/88 to-transparent md:h-64" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_0,transparent_54%,rgba(7,6,18,0.2)_100%)]" />
     </section>
   );
 }
@@ -998,7 +922,7 @@ function ProposalContent() {
         </div>
       </section>
 
-      <section id="investimento" className="relative order-[20] z-10 mx-auto max-w-[1200px] border-b-[4px] border-b-[#9b5de5] px-6 py-12 shadow-[0_32px_90px_rgba(155,93,229,0.18)] md:py-16">
+      <section id="investimento" className="relative order-[20] z-10 mx-auto max-w-[1200px] px-6 py-12 md:py-16">
         <div className="text-center">
           <span className="light-chip light-body inline-flex rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em]">
             Modelos de contratação
@@ -1025,9 +949,7 @@ function ProposalContent() {
                     de dados sob controle da operação pública.
                   </p>
                 </div>
-                <div className="light-chip flex h-14 w-14 items-center justify-center rounded-2xl">
-                  <Layers3 className="h-7 w-7" />
-                </div>
+                <Layers3 className="h-9 w-9 flex-none text-[#4f14a0]" />
               </div>
 
               <div className="mt-10">
@@ -1071,7 +993,7 @@ function ProposalContent() {
           </BlurIn>
 
           <BlurIn delay={0.08}>
-            <div className="purple-gradient relative flex h-full flex-col overflow-hidden rounded-[28px] p-8 text-white shadow-[0_30px_80px_rgba(79,20,160,0.24)] md:p-10">
+            <div className="purple-gradient relative flex h-full flex-col overflow-hidden rounded-[28px] p-8 text-white md:p-10">
               <div className="absolute right-6 top-6 rounded-full bg-white/12 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em]">
                 Popular
               </div>
@@ -1086,9 +1008,7 @@ function ProposalContent() {
                     manutenção e evolução contínua.
                   </p>
                 </div>
-                <div className="rounded-2xl bg-white/12 p-4">
-                  <Cloud className="h-7 w-7" />
-                </div>
+                <Cloud className="h-9 w-9 flex-none text-white" />
               </div>
 
               <div className="mt-10">
@@ -1098,7 +1018,7 @@ function ProposalContent() {
                 <p className="light-heading mt-2 text-4xl font-bold text-white sm:text-5xl">
                   R$ 1.600
                   <span className="light-body ml-2 text-lg font-medium text-white/76">
-                    / mês
+                    / mês por unidade
                   </span>
                 </p>
               </div>
@@ -1122,8 +1042,11 @@ function ProposalContent() {
           </BlurIn>
         </div>
 
-        <BlurIn className="mt-8">
-          <div id="expansao" className="light-glass rounded-[36px] p-4 md:p-6">
+      </section>
+
+      <section id="expansao" className="relative order-[18] z-10 mx-auto max-w-[1200px] px-6 py-10 md:py-14">
+        <BlurIn>
+          <div className="light-glass rounded-[36px] p-4 md:p-6">
             <div className="grid gap-5 lg:grid-cols-[1.04fr_0.96fr]">
               <div className="light-panel overflow-hidden rounded-[28px] p-3">
                 <img
@@ -1181,7 +1104,7 @@ function ProposalContent() {
                   className="light-panel rounded-[24px] bg-white/72 p-5 transition duration-300 hover:-translate-y-1 hover:border-[#4f14a0]/20"
                 >
                   <div className="flex items-center justify-between gap-3">
-                    <div className="light-chip flex h-11 w-11 items-center justify-center rounded-2xl">
+                    <div className="light-chip flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl">
                       <Network className="h-5 w-5" />
                     </div>
                     <p className="light-body text-xs font-semibold uppercase tracking-[0.18em] text-[#8b7ab2]">
@@ -1296,29 +1219,85 @@ function ProposalContent() {
 }
 
 function ClientFeedbackSection() {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) {
+      return undefined;
+    }
+
+    let frameId = 0;
+    let resetTimeout = 0;
+    let restarting = false;
+    const fadeWindow = 0.65;
+
+    const animateOpacity = () => {
+      const duration = Number.isFinite(video.duration) ? video.duration : 0;
+      const currentTime = video.currentTime ?? 0;
+
+      if (!duration || restarting) {
+        frameId = window.requestAnimationFrame(animateOpacity);
+        return;
+      }
+
+      let opacity = 1;
+
+      if (currentTime < fadeWindow) {
+        opacity = Math.max(0, Math.min(1, currentTime / fadeWindow));
+      } else if (duration - currentTime < fadeWindow) {
+        opacity = Math.max(0, Math.min(1, (duration - currentTime) / fadeWindow));
+      }
+
+      video.style.opacity = opacity.toString();
+      frameId = window.requestAnimationFrame(animateOpacity);
+    };
+
+    const handleEnded = () => {
+      restarting = true;
+      video.style.opacity = "0";
+      resetTimeout = window.setTimeout(() => {
+        video.currentTime = 0;
+        void video.play();
+        restarting = false;
+      }, 100);
+    };
+
+    video.style.opacity = "0";
+    void video.play().catch(() => undefined);
+    video.addEventListener("ended", handleEnded);
+    frameId = window.requestAnimationFrame(animateOpacity);
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      window.clearTimeout(resetTimeout);
+      video.removeEventListener("ended", handleEnded);
+    };
+  }, []);
+
   return (
-    <section className="relative -mt-px overflow-hidden bg-background pt-40 pb-20 text-foreground md:pt-52 md:pb-28">
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-44 bg-gradient-to-b from-[#f7fafd] via-[#9b5de5]/48 to-transparent md:h-56" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-72 bg-[radial-gradient(ellipse_at_50%_0%,rgba(247,250,253,0.95),rgba(155,93,229,0.44)_34%,rgba(79,20,160,0.32)_55%,transparent_82%)]" />
+    <section className="relative -mt-px overflow-hidden bg-background pb-20 pt-44 text-foreground md:pb-28 md:pt-56">
       <video
+        ref={videoRef}
         autoPlay
         muted
-        loop
         playsInline
-        className="sephara-feedback-video pointer-events-none absolute inset-x-0 top-0 h-[46rem] w-full scale-105 object-cover opacity-[0.34] [mask-image:linear-gradient(to_bottom,transparent_0%,black_20%,black_70%,transparent)]"
+        className="sephara-video absolute inset-x-0 top-16 h-[52rem] w-full scale-[1.04] object-cover opacity-0 [filter:hue-rotate(54deg)_saturate(1.8)_brightness(0.82)] [mask-image:linear-gradient(to_bottom,transparent_0%,black_20%,black_86%,transparent_100%)]"
       >
         <source src={glowBridgeVideoUrl} type="video/mp4" />
       </video>
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[46rem] bg-[radial-gradient(circle_at_50%_18%,rgba(155,93,229,0.58),transparent_34rem),linear-gradient(180deg,rgba(79,20,160,0.42),rgba(7,6,18,0.12)_48%,transparent)] mix-blend-screen" />
-      <div className="pointer-events-none absolute inset-x-0 top-20 h-[34rem] bg-[#6f2ad8]/20 mix-blend-color md:top-24" />
-      <div className="section-grid pointer-events-none absolute inset-0 opacity-35" />
-      <div className="pointer-events-none absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-primary/18 blur-3xl" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[42rem] bg-[#6f18d8]/35 mix-blend-color" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[44rem] bg-[radial-gradient(ellipse_at_50%_16%,rgba(155,93,229,0.44),rgba(64,15,119,0.28)_32%,rgba(7,6,18,0.72)_70%,rgba(7,6,18,0.96)_100%)] mix-blend-screen" />
+      <div className="pointer-events-none absolute inset-x-0 top-[-1px] h-28 bg-gradient-to-b from-[#f7fafd] via-[#2a123f]/42 to-transparent md:h-36" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[52rem] bg-gradient-to-b from-background/52 via-background/44 via-55% to-background/94" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-background via-background/84 to-transparent" />
+      <div className="pointer-events-none absolute left-1/2 top-20 h-[34rem] w-[60rem] -translate-x-1/2 rounded-full bg-[#9b5de5]/20 blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
         <BlurIn>
           <div className="grid items-end gap-10 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
-              <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#d7b8ff] drop-shadow-[0_2px_10px_rgba(7,6,18,0.85)]">
                 Experiência Sephara IA
               </p>
               <h2 className="mt-5 max-w-2xl text-4xl font-medium leading-tight text-foreground sm:text-5xl md:text-6xl">
@@ -1352,7 +1331,7 @@ function ClientFeedbackSection() {
                     <p className="text-sm font-semibold text-white">
                       {feedback.author}
                     </p>
-                    <p className="mt-1 text-xs font-medium uppercase tracking-[0.16em] text-primary/80">
+                    <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-white/72 drop-shadow-[0_1px_8px_rgba(7,6,18,0.65)]">
                       {feedback.segment}
                     </p>
                   </div>
